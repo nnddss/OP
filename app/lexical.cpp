@@ -59,7 +59,7 @@ int main(int argc,char *argv[]){
 		top=0;//top terminal 
 		top1=1;// true top
 		int l=strlen(sentence);
-		for(int k=0;k<l;k++){
+		for(int k=0;k<1024;k++){
 			if(gettype(sentence[k])==0){
 				sentence[k]='#';
 				sentence[k+1]='\0';
