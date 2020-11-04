@@ -12,7 +12,6 @@ int gettype(char c){
 		case '(': return 3;
 		case ')': return 4;
 		case 'i': return 5;
-		case 'z': return 5;
 		case '#': return 6;
 		case 'N': return 7;
 		default : return 0;
