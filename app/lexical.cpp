@@ -37,6 +37,9 @@ int reduce(){
 	}
 	else if(gettype(sta[top])==1||gettype(sta[top])==2){
 		if(sta[top-1]=='N'&&sta[top+1]=='N'){
+			for(int j=top1;j>=top;j--){
+				sta[j]='\0';
+			}
 			top1=top;
 			return 1;
 		}
