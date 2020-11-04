@@ -59,8 +59,15 @@ int main(int argc,char *argv[]){
 		top=0;//top terminal 
 		top1=1;// true top
 		int l=strlen(sentence);
-		sentence[l-2]='#';
-		sentence[l-1]='\0';
+		for(int k=0;k<l;k++){
+			if(gettype(sentence[k])==0){
+				sentence[k]='#';
+				sentence[k+1]='\0';
+				l=k+1;
+			}
+				
+		} 
+
 //		sentence[l]='#';
 		for(int i=0;i<=l;){
 			if(gettype(sentence[i])==0){
