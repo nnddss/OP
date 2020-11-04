@@ -61,7 +61,14 @@ int main(int argc,char *argv[]){
 		int l=strlen(sentence);
 
 		sentence[l-2]='#';
-		for(int i=0;i<=l-2;){
+		for(int k=0;k<=l;k++){
+			if(gettype(sentence[k])==0){
+				sentence[k]='#';
+				l=k;
+				break;
+			}
+		}
+		for(int i=0;i<=l;){
 			if(gettype(sentence[i])==0){
 				printf("E\n");
 				return 0;
