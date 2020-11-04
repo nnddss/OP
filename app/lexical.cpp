@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-char sentence[1024];
+char sentence[1050];
 char sta[1024];
 int top,top1,i;
 char c;
@@ -54,7 +54,7 @@ int reduce(){
 int main(int argc,char *argv[]){
 	FILE *fp;
 	
-	 fp = fopen(argv[1], "r");
+	 fp = fopen(argv[1], "rb");
 	 while(fgets(sentence,1024,fp)){
 //		while(~scanf("%s",&sentence)){
 		sta[0]='#';
@@ -62,9 +62,9 @@ int main(int argc,char *argv[]){
 		top1=1;// true top
 		int l=strlen(sentence);
 
-		sentence[l-1]='#';
+		sentence[l-2]='#';
 		
-		for(i=0;i<=l-1;){
+		for(i=0;i<=l-2;){
 			if(gettype(sentence[i])==0){
 				printf("E\n");
 				return 0;
