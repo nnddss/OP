@@ -99,6 +99,6 @@ int main(int argc,char *argv[]){
 		memset(sta,0,1024);
 		top=0;
 	} 
-    
+    fclose(fp);
     return 0;
 }
