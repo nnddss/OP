@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-char sentence[1050];
+char sentence[1024];
 char sta[1024];
 int top,top1,i;
 char c;
@@ -37,6 +37,7 @@ int reduce(){
 	}
 	else if(gettype(sta[top])==1||gettype(sta[top])==2){
 		if(sta[top-1]=='N'&&sta[top+1]=='N'){
+			
 			for(int j=top1;j>=top;j--){
 				sta[j]='\0';
 			}
@@ -52,6 +53,18 @@ int reduce(){
 		i++;
 		return 1;
 	}
+	else if(gettype(sta[top])==4){
+		if(sta[top-1]=='N'&&sta[top-2]=='('){
+			for(int j=top1;j>top-2;j--){
+				sta[j]='\0';
+			}
+			sta[top-2]='N';
+			top1=top-1;
+			return 1;
+		}
+		else 
+		return 0;	
+	}
 	return 0;
 }
 int main(int argc,char *argv[]){
@@ -59,14 +72,15 @@ int main(int argc,char *argv[]){
 	
 	 fp = fopen(argv[1], "rb");
 	 while(fgets(sentence,1024,fp)){
-//      printf("%s\n",sentence);
 //		while(~scanf("%s",&sentence)){
 		sta[0]='#';
 		top=0;//top terminal 
 		top1=1;// true top
 		int l=strlen(sentence);
+
 		sentence[l-2]='#';
-		for(i=0;i<=l-2;){
+		
+		for(i=0;i<=l;){
 			if(gettype(sentence[i])==0){
 				printf("E\n");
 				return 0;
@@ -77,7 +91,7 @@ int main(int argc,char *argv[]){
 					break;
 				}
 			}
-			if(top==0||(top!=0&&matrix[gettype(sta[top])][gettype(sentence[i])]==-1)){
+			if(top==0||(top!=0&&matrix[gettype(sta[top])][gettype(sentence[i])]==-1)||matrix[gettype(sta[top])][gettype(sentence[i])]==0){
 				if(sentence[i]=='#')
 					return 0;
 				sta[top1]=sentence[i];
@@ -85,7 +99,7 @@ int main(int argc,char *argv[]){
 				printf("I%c\n",sentence[i]);
 				i++;
 			}
-			else if(matrix[gettype(sta[top])][gettype(sentence[i])]==1||matrix[gettype(sta[top])][gettype(sentence[i])]==0){
+			else if(matrix[gettype(sta[top])][gettype(sentence[i])]==1){
 				if(reduce()==1)
 					printf("R\n");
 				else {
