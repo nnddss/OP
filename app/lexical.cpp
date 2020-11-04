@@ -2,7 +2,7 @@
 using namespace std;
 char sentence[1024];
 char sta[1024];
-int top,top1;
+int top,top1,i;
 char c;
 int matrix[7][7]={{2,2,2,2,2,2},{0,1,-1,-1,1,-1,1},{0,1,1,-1,1,-1,1},{0,-1,-1,-1,0,-1,1},{0,1,1,2,1,2,1},{0,1,1,2,1,2,1},{0,-1,-1,-1,-1,-1,-1}};
 int gettype(char c){
@@ -12,6 +12,7 @@ int gettype(char c){
 		case '(': return 3;
 		case ')': return 4;
 		case 'i': return 5;
+		case 'z': return 5;
 		case '#': return 6;
 		case 'N': return 7;
 		default : return 0;
@@ -45,6 +46,7 @@ int reduce(){
 	else if(gettype(sta[top])==3){
 		sta[top]='N';
 		top1=top;
+		i++;
 		return 1;
 	}
 	return 0;
@@ -62,7 +64,7 @@ int main(int argc,char *argv[]){
 
 		sentence[l-1]='#';
 		
-		for(int i=0;i<=l-1;){
+		for(i=0;i<=l-1;){
 			if(gettype(sentence[i])==0){
 				printf("E\n");
 				return 0;
@@ -99,6 +101,7 @@ int main(int argc,char *argv[]){
 		memset(sentence,0,1024);
 		memset(sta,0,1024);
 		top=0;
+		top1=0;
 	} 
     fclose(fp);
     return 0;
