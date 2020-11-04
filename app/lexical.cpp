@@ -62,9 +62,7 @@ int main(int argc,char *argv[]){
 		top=0;//top terminal 
 		top1=1;// true top
 		int l=strlen(sentence);
-
 		sentence[l-2]='#';
-		
 		for(i=0;i<=l-2;){
 			if(gettype(sentence[i])==0){
 				printf("E\n");
