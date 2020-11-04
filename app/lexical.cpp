@@ -55,7 +55,7 @@ int main(int argc,char *argv[]){
 	FILE *fp;
 	
 	 fp = fopen(argv[1], "r");
-	 while(fscanf(fp,"%s",&sentence)){
+	 while(fgets(&sentence,1024,fp)){
 //		while(~scanf("%s",&sentence)){
 		sta[0]='#';
 		top=0;//top terminal 
